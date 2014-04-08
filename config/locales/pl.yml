@@ -1,0 +1,15 @@
+pl:
+  errors:
+    messages:
+       extension_white_list_error: "niewłaściwy format zdjęcia"
+       wrong_url_format: "Niewłaściwy format adresu url - musi zawierać http://"
+
+  simple_captcha:
+    label: "Wpisz podany wyżej kod"
+    placeholder: ""
+
+  will_paginate:
+    previous_label: "&#8592;  Cofnij"
+    next_label: "Dalej &#8594;"
+    page_gap: "&hellip;"
+        

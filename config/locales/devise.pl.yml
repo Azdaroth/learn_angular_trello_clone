@@ -1,0 +1,70 @@
+pl:
+  errors:
+    messages:
+      expired: 'stracił ważność, wyślij zapytanie o nowy'
+      not_found: 'nie znaleziono'
+      already_confirmed: 'już został aktywowany, możesz się zalogować'
+      confirmation_period_expired: "musi być potwierdzony w ciągu %{period}, wyślij ponownie zapytanie"
+      not_locked: 'nie był zablokowany'
+      not_saved:
+        one: '%{resource} nie został zapisany z powodu błędu:'
+        other: '%{resource} nie został zapisany z powodu następujących błędów:'
+  devise:
+    login: 'Zaloguj'
+    remember_me: 'Zapamiętaj mnie'
+    login_title: 'Logowanie'
+    failure:
+      last_attempt: "Pozostała jedna próba logowania. W przypadku braku sukcesu z logowaniem konto zostanie zablokowane."
+      already_authenticated: 'Jesteś już zalogowany.'
+      unauthenticated: 'Zaloguj lub zarejestruj się, aby kontynuować.'
+      unconfirmed: 'Nie aktywowałeś/łaś jeszcze swojego konta - sprawdź swój e-mail.'
+      locked: 'Twoje konto jest zablokowane.'
+      invalid: 'Niepoprawny adres e-mail lub hasło.'
+      invalid_token: 'Niepoprawny token.'
+      timeout: 'Sesja wygasła - zaloguj się ponownie, aby kontynuować.'
+      inactive: 'Konto nie zostało jeszcze aktywowane.'
+      not_approved: 'Twoje konto nie zostało jeszcze uaktywnione przez administratora.'
+      not_found_in_database: "Niewłaściwe hasło lub email."
+    sessions:
+      signed_in: 'Witaj ponownie!'
+      signed_out: 'Wylogowano. Zapraszamy ponownie!'
+    passwords:
+      no_token: "Nie możesz wejść na tę stronę bez wykorzystania URLa wysłanego e-maila."
+      send_instructions: 'Za chwilę wyślemy instrukcję zmiany hasła na Twój adres e-mail.'
+      updated: 'Zmieniłeś/łaś swoje hasło. Zostałeś/łaś automatycznie zalogowany.'
+      updated_not_active: 'Zmieniłeś/łaś swoje hasło.'
+      send_paranoid_instructions: 'Jeśli wpisałeś/łaś poprawny e-mail, za chwilę wyślemy instrukcję zmiany hasła na Twój adres e-mail.'
+    confirmations:
+      send_instructions: 'Za chwilę wyślemy instrukcję aktywowania konta na Twój adres e-mail.'
+      send_paranoid_instructions: 'Jeśli wpisałeś/łaś poprawny e-mail, za chwilę wyślemy instrukcję aktywowania konta na Twój adres e-mail.'
+      confirmed: 'Aktywowałeś/łaś swoje konto. Jeśli nie zostałeś/łaś automatycznie zalogowany/a, poczekaj na aktywację konta przez administratora.'
+    registrations:
+      signed_up: 'Witaj! Zarejestrowałeś/łaś się pomyślnie.'
+      signed_up_but_unconfirmed: 'E-mail z linkiem aktywacyjnym został wysłany na Twój adres e-mail. Sprawdź e-mail, aby dokończyć rejestrację.'
+      signed_up_but_inactive: 'Zarejestrowałeś/łaś się pomyślnie. Niemniej jednak nie zostałeś/łaś zalogowany, ponieważ Twoje konto nie zostało jeszcze aktywowane.'
+      signed_up_but_locked: 'Zarejestrowałeś/łaś się pomyślnie. Niemniej jednak nie zostałeś/łaś zalogowany, ponieważ Twoje konto zostało zablokowane.'
+      updated: 'Zaktualizowałeś/łaś swoje dane.'
+      update_needs_confirmation: 'Aby potwierdzić zmiany, musimy zweryfikować Twój nowy adres e-mail. Za chwilę wyślemy instrukcję na nowy adres.'
+      destroyed: 'Usunąłeś/łaś swoje konto.'
+      user:
+        signed_up_but_not_approved: 'Rejestracja przebigła pomyślnie. E-mail z linkiem aktywacyjnym został wysłany na Twój adres e-mail, kliknij na podany w nim link. Prosimy następnie czekać na zatwierdzenie konta przez administratora'
+#      inactive_signed_up: 'Zarejestrowałeś/łaś się pomyślnie. Nie zostałeś/łaś jednak zalogowany ponieważ konto jest %{reason}.'
+#      reasons:
+#        inactive: 'nieaktywne'
+#        unconfirmed: 'niepotwierdzone'
+#        locked: 'zablokowane'
+    unlocks:
+      send_instructions: 'Za chwilę wyślemy instrukcję odblokowania konta na Twój adres e-mail.'
+      unlocked: 'Odblokowaliśmy Twoje konto. Jesteś już zalogowany.'
+      send_paranoid_instructions: 'Jeśli Twoje konto istnieje w naszej bazie, otrzymasz zaraz e-mail z instrukcją jak odblokować swoje konto.'
+    omniauth_callbacks:
+      success: 'Zalogowałeś/łaś się przez %{kind}.'
+      failure: 'Logowanie przez konto %{kind} zakończyło się błędem: "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrukcja aktywacji konta'
+      reset_password_instructions:
+        subject: 'Instrukcja ustawienia nowego hasła'
+      unlock_instructions:
+        subject: 'Instrukcja odblokowania konta'
+
