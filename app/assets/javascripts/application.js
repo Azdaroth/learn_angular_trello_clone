@@ -15,21 +15,27 @@
 //= require jquery_ujs
 //= require wiselinks
 //= require twitter/bootstrap
+//= require underscore
+//= require angular
+//= require angular-resource
+//= require main
+//= require_tree .
 
-$(document).ready(function() {
 
-  window.wiselinks = new Wiselinks($('#wiselinks'));
+// $(document).ready(function() {
 
-  $(document).off('page:done').on('page:done', function(event, $target, status, url, data) {    
-  });
+//   window.wiselinks = new Wiselinks($('#wiselinks'));
 
-  $(document).off('page:loading').on('page:loading', function(event, $target, render, url) {
-  });
+//   $(document).off('page:done').on('page:done', function(event, $target, status, url, data) {    
+//   });
 
-  $(document).off('page:redirected').on('page:redirected', function(event, $target, render, url) {
-  });
+//   $(document).off('page:loading').on('page:loading', function(event, $target, render, url) {
+//   });
 
-  $(document).off('page:always').on('page:always', function(event, xhr, settings) {
-  });
+//   $(document).off('page:redirected').on('page:redirected', function(event, $target, render, url) {
+//   });
 
-});
+//   $(document).off('page:always').on('page:always', function(event, xhr, settings) {
+//   });
+
+// });

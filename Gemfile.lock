@@ -22,6 +22,17 @@ GIT
       rails (>= 3, < 5)
       thor (~> 0.14)
 
+GIT
+  remote: https://github.com/seyhunak/twitter-bootstrap-rails
+  revision: f58909b7d6d12d88c2c79eda96d601f12a08bf85
+  branch: bootstrap3
+  specs:
+    twitter-bootstrap-rails (3.1.1)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,6 +49,8 @@ GEM
       activesupport (= 4.1.0.rc2)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (4.1.0.rc2)
       activesupport (= 4.1.0.rc2)
       builder (~> 3.1)
@@ -450,6 +463,10 @@ GEM
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
+    simple_token_authentication (1.2.0)
+      actionmailer (>= 3.2.6, < 5)
+      activerecord (>= 3.2.6, < 5)
+      devise (~> 3.2.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -511,11 +528,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.8)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     uber (0.0.4)
@@ -545,6 +557,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   airbrake
   annotate
   awesome_print
@@ -617,6 +630,7 @@ DEPENDENCIES
   schema_plus
   sdoc (~> 0.4.0)
   simple_form
+  simple_token_authentication
   simplecov
   smusher
   spork
@@ -626,7 +640,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3
   therubyracer
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails!
   uglifier (>= 1.3.0)
   virtus
   whenever

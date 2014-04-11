@@ -74,8 +74,11 @@ gem "airbrake"
 gem "schema_plus"
 gem "reform"
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", git: "https://github.com/seyhunak/twitter-bootstrap-rails", branch: "bootstrap3"
 gem "jquery-ui-rails"
+gem 'simple_token_authentication'
+gem "active_model_serializers"
+
 group :development, :test do
   gem "quiet_assets"
   gem "better_errors"

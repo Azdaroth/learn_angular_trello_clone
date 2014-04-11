@@ -63,6 +63,7 @@ Spork.prefork do
 
     config.include Capybara::DSL
     config.include(MailerMacros)
+    config.include JsonApiHelpers, type: :controller
     config.before(:each) { reset_email }
 
     config.run_all_when_everything_filtered = true

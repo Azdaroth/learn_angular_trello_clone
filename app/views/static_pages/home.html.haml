@@ -1,0 +1,6 @@
+#dashboard
+  .container
+    - if current_user
+      %div{"ng-view" => ""}
+    - else
+      = link_to "Sign in", new_user_session_path
