@@ -16,8 +16,8 @@
 //= require wiselinks
 //= require twitter/bootstrap
 //= require underscore
-//= require angular
-//= require angular-resource
+//= require lib/angular
+//= require lib/angular-resource
 //= require main
 //= require_tree .
 
