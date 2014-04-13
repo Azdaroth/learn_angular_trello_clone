@@ -1,4 +1,4 @@
-desc "Run karma test runner for JavaScript tests"
+desc "Run karma runner for unit/integrations tests"
 task :karma do
-  sh "karma start jsspec/config.coffee"
+  sh "karma start jsspec/config_unit.coffee"
 end

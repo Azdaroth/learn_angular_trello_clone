@@ -1,4 +1,4 @@
-.row{"ng-init" => "init()", "ng-controller" => "DashboardCtrl"}
+.row{"ng-controller" => "DashboardController"}
 
   .container
     = simple_form_for :board, url: "", method: nil, html: { class: "col-lg-8", name: "boardForm", "ng-submit" => "createBoard()" } do |f|
@@ -14,3 +14,6 @@
     %ul{"ui-sortable" => "", "ng-models" => "boards"}
       %li.board.col-lg-3{"ng-repeat" => "board in boards", }
         {{ board.name }}
+        %br
+        %span.text-danger{"ng-click" => "destroyBoard(board.id)"}
+          Remove

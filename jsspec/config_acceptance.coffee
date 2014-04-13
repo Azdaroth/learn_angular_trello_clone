@@ -1,5 +1,3 @@
-# Karma configuration
-# Generated on Wed Apr 09 2014 10:14:57 GMT+0200 (CEST)
 
 module.exports = (config) ->
   config.set
@@ -15,19 +13,21 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
-      'app/assets/javascripts/angular.js',
-      'app/assets/javascripts/angular-resource.js',
-      'app/assets/javascripts/angular-route.js',
+      'vendor/assets/components/angular/angular.js',
+      'vendor/assets/components/angular-resource/angular-resource.js',
+      'vendor/assets/components/angular-route/angular-route.js',
+      'vendor/assets/components/angular-ui-sortable/sortable.js',
       'jsspec/support/*.js'
       'app/assets/javascripts/main.js.coffee',
       'app/assets/javascripts/**/*.js*',
+      'jsspec/controllers/*.coffee'
       'jsspec/**/*.coffee'
     ]
 
 
     # list of files to exclude
     exclude: [
-      'app/assets/javascripts/application.js',
+      'jsspec/support/angular-scenario.js'
     ]
 
 
