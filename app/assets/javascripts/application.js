@@ -19,6 +19,7 @@
 //= require angular/angular
 //= require angular-resource/angular-resource
 //= require angular-route/angular-route
+//= require angular-ui-sortable/sortable
 //= require main
 //= require_directory ./controllers
 

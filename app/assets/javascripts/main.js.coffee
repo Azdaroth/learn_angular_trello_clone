@@ -1,4 +1,4 @@
-trelloClone = angular.module('trelloClone', ['ngResource', 'ngRoute'])
+trelloClone = angular.module('trelloClone', ['ngResource', 'ngRoute', 'ui.sortable'])
 
 trelloClone.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")

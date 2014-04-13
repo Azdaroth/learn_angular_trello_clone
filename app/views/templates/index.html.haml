@@ -1,15 +1,16 @@
 .row{"ng-init" => "init()", "ng-controller" => "DashboardCtrl"}
 
   .container
-    = simple_form_for :board, url: "", method: nil, html: { class: "col-lg-8", name: "board-form", "ng-submit" => "createBoard()" } do |f|
+    = simple_form_for :board, url: "", method: nil, html: { class: "col-lg-8", name: "boardForm", "ng-submit" => "createBoard()" } do |f|
       = f.input :name, label: "Name", input_html: { "ng-model" => "boardName", "required" => "" }
-      %div{"ng-show" => "board-form.board[name].$dirty && board-form.board[name].$invalid"}
-        Name is required.
+      %div{"ng-show" => "boardForm['board[name]'].$dirty && boardForm['board[name]'].$invalid" }
+        %span.has-error{"ng-show" => "boardForm['board[name]'].$error.required"}
+          Name is required.
 
       .form-group
-        = f.button :submit, "Add", class: "btn btn-primary"
+        = f.button :submit, "Add", class: "btn btn-primary", "ng-disabled" => "boardForm.$invalid"
 
   .container
-    .board.col-lg-3{"ng-repeat" => "board in boards"}
-      %p
+    %ul{"ui-sortable" => "", "ng-models" => "boards"}
+      %li.board.col-lg-3{"ng-repeat" => "board in boards", }
         {{ board.name }}
