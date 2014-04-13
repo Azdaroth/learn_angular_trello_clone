@@ -4,3 +4,13 @@ form.simple_form {
   }
 }
 
+input.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+ 
+.board {
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin: 10px 20px 10px 0;
+  min-height: 200px;  
+}

@@ -13,6 +13,7 @@ module TrelloClone
     config.autoload_paths += %W(#{config.root}/app/forms)
     config.autoload_paths += %W(#{config.root}/app/policies)
 
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
     config.time_zone = 'Warsaw'
     config.i18n.default_locale = :pl

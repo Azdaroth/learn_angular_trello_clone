@@ -1,1 +1,15 @@
-%div{"ng-view" => ""}
+.row{"ng-init" => "init()", "ng-controller" => "DashboardCtrl"}
+
+  .container
+    = simple_form_for :board, url: "", method: nil, html: { class: "col-lg-8", name: "board-form", "ng-submit" => "createBoard()" } do |f|
+      = f.input :name, label: "Name", input_html: { "ng-model" => "boardName", "required" => "" }
+      %div{"ng-show" => "board-form.board[name].$dirty && board-form.board[name].$invalid"}
+        Name is required.
+
+      .form-group
+        = f.button :submit, "Add", class: "btn btn-primary"
+
+  .container
+    .board.col-lg-3{"ng-repeat" => "board in boards"}
+      %p
+        {{ board.name }}

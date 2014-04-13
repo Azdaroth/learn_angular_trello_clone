@@ -16,10 +16,12 @@
 //= require wiselinks
 //= require twitter/bootstrap
 //= require underscore
-//= require lib/angular
-//= require lib/angular-resource
+//= require angular/angular
+//= require angular-resource/angular-resource
+//= require angular-route/angular-route
 //= require main
-//= require_tree .
+//= require_directory ./controllers
+
 
 
 // $(document).ready(function() {

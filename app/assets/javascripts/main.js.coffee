@@ -7,5 +7,6 @@ trelloClone.config ($httpProvider) ->
 trelloClone.config ($locationProvider, $routeProvider) ->
   $locationProvider.html5Mode true
   $routeProvider
+    .when "/dashboard", templateUrl: "/templates/index.html", controller: 'DashboardCtrl'
     .when '/', redirectTo: '/dashboard'
-    .when "/dashboard", templateUrl: "/templates/dashboard.html", controller: 'DashboardCtrl'
+    
