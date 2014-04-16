@@ -1,20 +1,25 @@
-angular.module('trelloClone').controller "DashboardController", ($scope) ->
+angular.module('trelloClone').controller "DashboardController", ($scope, Board) ->
 
-  $scope.boards = []
-  $scope.currentId = 0
-    
+  $scope.boardService = new Board()
+
+  $scope.init = ->
+    $scope.boards = $scope.boardService.all()
+    $scope.currentId = 0  
+
   $scope.createBoard = ->
     $scope.currentId += 1
-    $scope.boards.push({"name": $scope.boardName, "id": $scope.currentId})
+    name = $scope.boardName
+    board = $scope.boardService.create(name: name)
+    $scope.boards.push(board)
     $scope.boardName = ""
-    
+
   $scope.destroyBoard = (id) ->
-    boardToBeDelayed = undefined
-    $scope.boards.forEach (board) ->
-      boardToBeDelayed = board if board.id is id
-    $scope.boards.splice($scope.boards.indexOf(boardToBeDelayed), 1)
+    $scope.boardService.destroy(id)
+    $scope.boards = $scope.boards.filter (board) ->
+      board.id isnt id
+    
+  $scope.updateBoardName = (board, data) ->
+    $scope._updateBoard(board.id, "name": data)
 
-
-
-
-
+  $scope._updateBoard = (id, params) ->
+    $scope.boardService.update(id, params)    

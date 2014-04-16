@@ -19,6 +19,7 @@ module.exports = (config) ->
       'vendor/assets/components/angular-resource/angular-resource.js',
       'vendor/assets/components/angular-route/angular-route.js',
       'vendor/assets/components/angular-ui-sortable/sortable.js',
+      'vendor/assets/components/angular-xeditable/dist/js/xeditable.js'
       'jsspec/support/*.js'
       'app/assets/javascripts/main.js.coffee',
       'app/assets/javascripts/**/*.js*',

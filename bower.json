@@ -11,6 +11,7 @@
     "angular": "1.2.16",
     "angular-route": "1.2.16",
     "angular-resource": "1.2.16",
-    "angular-ui-sortable": "0.12.3"
+    "angular-ui-sortable": "0.12.3",
+    "angular-xeditable": "0.1.8"
   }
 }

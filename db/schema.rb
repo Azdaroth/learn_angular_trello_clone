@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408213206) do
+ActiveRecord::Schema.define(version: 20140416202353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 20140408213206) do
     t.index ["authentication_token"], :name => "index_users_on_authentication_token"
     t.index ["email"], :name => "index_users_on_email", :unique => true
     t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  end
+
+  create_table "boards", force: true do |t|
+    t.string   "name",                   null: false
+    t.integer  "user_id",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "priority",   default: 1, null: false
+    t.index ["priority"], :name => "index_boards_on_priority"
+    t.index ["user_id"], :name => "fk__boards_user_id"
+    t.index ["user_id"], :name => "index_boards_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_boards_user_id"
   end
 
 end

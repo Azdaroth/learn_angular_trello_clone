@@ -20,7 +20,10 @@
 //= require angular-resource/angular-resource
 //= require angular-route/angular-route
 //= require angular-ui-sortable/sortable
+//= require angular-xeditable/dist/js/xeditable.js
 //= require main
+//= require_directory ./services
+//= require_directory ./directives
 //= require_directory ./controllers
 
 
