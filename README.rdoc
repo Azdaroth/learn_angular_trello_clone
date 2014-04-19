@@ -1,28 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app I created to learn AngularJS. Trello is pretty cool and making clone of some functionality like creating boards, lists and card and making them sortable etc. seemed like a great way to learn new framework. Naming is hard, so I just named it Trello Clone:). 
 
-Things you may want to cover:
+Code might be really messy, but it coulk a good resource about how to test (or not to test) Angular code and integrate it with Rails. I'm not a really good designer and the design is probably pretty bad :).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To run tests use rake task:
+```
+bundle exec rake karma
+```
