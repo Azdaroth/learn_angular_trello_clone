@@ -5,6 +5,7 @@ An app I created to learn AngularJS. Trello is pretty cool and making clone of s
 Code might be really messy, but it coulk a good resource about how to test (or not to test) Angular code and integrate it with Rails. I'm not a really good designer and the design is probably pretty bad :).
 
 To run tests use rake task:
+
 ```
 bundle exec rake karma
 ```
