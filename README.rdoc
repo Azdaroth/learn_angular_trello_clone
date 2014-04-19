@@ -6,6 +6,5 @@ Code might be really messy, but it coulk a good resource about how to test (or n
 
 To run tests use rake task:
 
-```
 bundle exec rake karma
-```
+
