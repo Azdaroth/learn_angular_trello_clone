@@ -4,10 +4,8 @@ angular.module('trelloClone').controller "DashboardController", ($scope, Board) 
 
   $scope.init = ->
     $scope.boards = $scope.boardService.all()
-    $scope.currentId = 0  
 
   $scope.createBoard = ->
-    $scope.currentId += 1
     name = $scope.boardName
     board = $scope.boardService.create(name: name)
     $scope.boards.push(board)

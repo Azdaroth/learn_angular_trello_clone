@@ -13,10 +13,10 @@ angular.module('trelloClone').factory 'Board', ($resource, $http) ->
       defaults.patch['Content-Type'] = 'application/json'
 
     all: ->
-      @request.query(( -> null), ( -> null))
+      new @request.query()
 
     find: (id) ->
-      @request.get(id: id)
+      new @request.get(id: id)
 
     create: (params) ->
       new @request(board: params).$save((board) -> params.id = board.id)

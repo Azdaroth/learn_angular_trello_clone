@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'templates#index'
   get "/templates/:template.html", to: "templates#template",  constraints: { template: /.+/ }
+  get '/boards/:id', to: 'templates#board'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

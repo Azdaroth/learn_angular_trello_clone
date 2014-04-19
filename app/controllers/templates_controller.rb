@@ -6,6 +6,10 @@ class TemplatesController < ApplicationController
     
   end
 
+  def board
+    
+  end
+
   def template
     render "/templates/#{params[:template]}", layout: nil
   end
