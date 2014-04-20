@@ -27,7 +27,7 @@ class Api::BoardsController < Api::BaseController
   private
 
     def board_params
-      params.require(:board).permit(:name)
+      params.require(:board).permit(:name, :priority)
     end
 
 end

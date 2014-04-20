@@ -11,10 +11,13 @@
         = f.button :submit, "Add", class: "btn btn-primary", "ng-disabled" => "boardForm.$invalid"
 
   .container
-    %ul{"ui-sortable" => "", "ng-models" => "boards"}
-      %li.board.col-lg-3{"ng-repeat" => "board in boards", }
+    %ul{"ui-sortable" => "sortableOptions", "ng-model" => "boards"}
+      %li.board.col-lg-3{"ng-repeat" => "board in boards | orderBy: 'priority'", }
         %a{href: "#", "editable-text" => "board.name", "onbeforesave" => "updateBoardName(board, $data)"}
           {{ board.name || 'empty' }}
         %br
+        %p 
+          Priority:
+          {{ board.priority }}
         %span.text-danger{"ng-click" => "destroyBoard(board.id)"}
           Remove
