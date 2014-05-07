@@ -88,6 +88,21 @@ describe "DashboardController", ->
       @scope.destroyBoard(id)
       expect(@Board.prototype.destroy).toHaveBeenCalledWith(id)
 
+    it "resets priorities", ->
+      @httpBackend.whenGET("/api/boards").respond([@orderBoard])
+      spyOn(@Board.prototype, 'destroy')
+      spyOn(@Board.prototype, 'update')
+      @scope.boards = [
+        {name: "name", id: 1, priority: 1},
+        {name: "name", id: 2, priority: 2},
+        {name: "name", id: 3, priority: 3}
+      ]
+      @scope.destroyBoard(1)
+      @timeout.flush()
+      expect(@scope.boards[0].priority).toEqual(1)
+      expect(@scope.boards[1].priority).toEqual(2)
+
+
   describe "updating board's name", ->
 
     it "calls service to update board", ->

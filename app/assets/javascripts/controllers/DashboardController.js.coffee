@@ -21,6 +21,7 @@ angular.module('trelloClone').controller "DashboardController", ($scope, $timeou
     $scope.boardService.destroy(id)
     $scope.boards = $scope.boards.filter (board) ->
       board.id isnt id
+    $scope.setPriorities()
     
   $scope.updateBoardName = (board, data) ->
     $scope._updateBoard(board.id, "name": data)
