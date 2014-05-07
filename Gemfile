@@ -13,7 +13,7 @@ gem 'spring',        group: :development
 gem "therubyracer", platforms: :ruby
 gem "nazca", git: "https://github.com/Azdaroth/nazca.git"
 gem "devise"
-gem "simple_form"
+gem 'simple_form', '3.1.0rc1'
 gem "country_select"
 gem "cells"
 gem "draper"

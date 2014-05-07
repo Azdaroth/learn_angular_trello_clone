@@ -1,4 +1,4 @@
-a# # Use this setup block to configure all options available in SimpleForm.
+# # Use this setup block to configure all options available in SimpleForm.
 # Bootstrap2
 # SimpleForm.setup do |config|
 #   config.wrappers :bootstrap, tag: 'div', class: 'control-group', error_class: 'error' do |b|

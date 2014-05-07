@@ -461,7 +461,7 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     sexp_processor (4.4.3)
-    simple_form (3.0.2)
+    simple_form (3.1.0.rc1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simple_token_authentication (1.2.1)
@@ -629,7 +629,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.2)
   schema_plus
   sdoc (~> 0.4.0)
-  simple_form
+  simple_form (= 3.1.0rc1)
   simple_token_authentication
   simplecov
   smusher
