@@ -18,9 +18,8 @@ angular.module('trelloClone').factory 'List', ($resource, $http) ->
     find: (id) ->
       new @request.get(id: id)
 
-    create: (params) ->
-      new @request(list: params).$save((list) -> params.id = list.id)
-      params
+    create: (params, successCallback) ->
+      new @request(list: params).$save()
 
     update: (id, params) ->
       new @request(list: params).$update(id: id)

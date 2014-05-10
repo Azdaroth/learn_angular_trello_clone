@@ -46,10 +46,6 @@ describe "Board", ->
       @boardService.create(@postParams)
       @httpBackend.flush()
 
-    it "returns params with id of assigned board", ->
-      result = @boardService.create(@postParams)
-      @httpBackend.flush()
-      expect(result.id).toEqual(@newId)
       
   describe "update", ->
 

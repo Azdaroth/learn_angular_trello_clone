@@ -3,8 +3,8 @@ describe "DashboardController", ->
   class Board
     constructor:  ->
     all: -> []
-    find: (id) -> id
     create: (params) -> params
+    find: (id) -> id
     update: (id, params) -> params
     destroy: (id) ->
 
@@ -13,13 +13,14 @@ describe "DashboardController", ->
     module("trelloClone")
 
   beforeEach ->
-    inject ($rootScope, $controller, $injector, $timeout, $httpBackend, Board) =>
+    inject ($rootScope, $q, $controller, $injector, $timeout, $httpBackend, Board) =>      
       @Board = Board
+      @q = $q
       @scope = $rootScope.$new()
       @timeout = $injector.get('$timeout');
       @httpBackend = $httpBackend
       @controller = $controller "DashboardController", $scope: @scope,
-        $timeout: @timeout, Board: Board
+        $timeout: @timeout, Board: @Board
       @scope.init()
 
   describe "adding new board", ->
@@ -27,9 +28,14 @@ describe "DashboardController", ->
     describe "board creation", ->
 
       beforeEach ->
+        @deferred = @q.defer()
         @scope.boardName = "name"
-        spyOn(@Board.prototype, 'create').andReturn(name: "name", id: 10, priority: 1)
+        @newBoard = {name: "name", id: 10, priority: 1}
+        @deferred.resolve(@newBoard)
+        @httpBackend.whenGET("/api/boards").respond([])
+        spyOn(@Board.prototype, 'create').andReturn(@deferred.promise)
         @scope.createBoard()
+        @scope.$apply()
 
       it "creates new board", ->
         expect(@scope.boards.length).toEqual(1)
@@ -44,6 +50,7 @@ describe "DashboardController", ->
     describe "priorities", ->
 
       beforeEach ->
+        @deferred = @q.defer()
         @oldBoard = {name: "old", id: 9, priority: 1}
         @newBoard = {name: "name", id: 10, priority: 1}
         @scope.boards = [@oldBoard]
@@ -51,9 +58,12 @@ describe "DashboardController", ->
         @httpBackend.whenGET("/api/boards").respond([@orderBoard])
         @httpBackend.whenPATCH("/api/boards/9").respond()
         @httpBackend.whenPATCH("/api/boards/10").respond()
-        spyOn(@Board.prototype, 'create').andReturn(@newBoard)
+        @newBoard = {name: "name", id: 10, priority: 1}
+        @deferred.resolve(@newBoard)
+        spyOn(@Board.prototype, 'create').andReturn(@deferred.promise)
         spyOn(@Board.prototype, 'update')
         @scope.createBoard()
+        @scope.$apply()
         @timeout.flush()
 
       it "sets priority 1 to new board", ->        

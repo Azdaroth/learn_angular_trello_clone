@@ -11,11 +11,11 @@ angular.module('trelloClone').controller "DashboardController", ($scope, $timeou
 
   $scope.createBoard = ->
     name = $scope.boardName
-    board = $scope.boardService.create(name: name)
-    $scope.boards.push(board)
-    board.priority = 0
-    $scope.boardName = ""
-    $scope.incrementPriorities()
+    board = $scope.boardService.create(name: name).then (board) ->
+      $scope.boards.push(board)
+      board.priority = 0
+      $scope.boardName = ""
+      $scope.incrementPriorities()
 
   $scope.destroyBoard = (id) ->
     $scope.boardService.destroy(id)

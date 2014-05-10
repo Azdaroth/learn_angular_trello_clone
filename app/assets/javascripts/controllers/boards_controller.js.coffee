@@ -1,5 +1,5 @@
-angular.module('trelloClone').controller "BoardsController", ($scope, $routeParams
- $route, Board, List) ->
+angular.module('trelloClone').controller "BoardsController", ($scope, $routeParams, $timeout,
+ $route, $q, Board, List) ->
 
   $scope.boardService = new Board()
   $scope.newList = {
@@ -7,10 +7,11 @@ angular.module('trelloClone').controller "BoardsController", ($scope, $routePara
   }
 
   $scope.createList = ->
-    list = $scope.listService.create(name: $scope.newList.name)
-    $scope.lists.push(list)
-    $scope.newList.name = ""
-    
+    $scope.listService.create(name: $scope.newList.name).then (list) ->
+      list.priority = 0
+      $scope.lists.push(list)
+      $scope.newList.name = ""
+      $scope.incrementPriorities()
 
   
   $scope.init = ->
@@ -19,11 +20,15 @@ angular.module('trelloClone').controller "BoardsController", ($scope, $routePara
       listService = new List($routeParams.boardId)
       $scope.listService = listService
       $scope.lists = listService.all()
-    
+
+
+  $scope.incrementPriorities = ->
+    $timeout ->
+      $scope.lists.forEach (list) ->
+        list.priority += 1
+        $scope.updateList(list.id, priority: list.priority)
   
-    
+  $scope.updateList = (id, params) ->
+    $scope.listService.update(id, params)  
 
     
-
-
-  

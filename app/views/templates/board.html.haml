@@ -14,8 +14,8 @@
 
   .container
     %ul{"ui-sortable" => "sortableOptions", "ng-model" => "lists"}
-      %li.board.col-lg-3{"ng-repeat" => "list in lists" }
-        %a{href: "#"}
-          {{ list.name || 'empty' }}
+      %li.board.col-lg-3{"ng-repeat" => "list in lists | orderBy: 'priority'" }
         %br
+        %p priority {{ list.priority }}
+        {{ list.name || 'empty' }}
         

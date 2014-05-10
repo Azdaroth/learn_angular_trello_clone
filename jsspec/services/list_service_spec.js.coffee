@@ -48,11 +48,6 @@ describe "List", ->
       @listService.create(@postParams)
       @httpBackend.flush()
 
-    it "returns params with id of assgined list", ->
-      result = @listService.create(@postParams)
-      @httpBackend.flush()
-      expect(result.id).toEqual(@newId)
-
   describe "update", ->
 
     beforeEach ->
