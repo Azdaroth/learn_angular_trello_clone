@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     # devise_scope :user do
     #   resource :session, only: [:create, :destroy]
     # end
-    resources :boards
+    resources :boards do
+      resources :lists
+    end
   end
 
   get '/dashboard', to: 'templates#index'

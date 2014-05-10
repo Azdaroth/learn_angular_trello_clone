@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416202353) do
+ActiveRecord::Schema.define(version: 20140507210404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20140416202353) do
     t.index ["user_id"], :name => "fk__boards_user_id"
     t.index ["user_id"], :name => "index_boards_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_boards_user_id"
+  end
+
+  create_table "lists", force: true do |t|
+    t.string   "name",                   null: false
+    t.integer  "board_id",               null: false
+    t.integer  "priority",   default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["board_id"], :name => "fk__lists_board_id"
+    t.index ["board_id"], :name => "index_lists_on_board_id"
+    t.foreign_key ["board_id"], "boards", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_lists_board_id"
   end
 
 end

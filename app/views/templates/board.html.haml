@@ -1,3 +1,21 @@
 .row{"ng-controller" => "BoardsController", "ng-init" => "init()"}
   %h1
     {{ board.name }}
+
+  .container
+    = simple_form_for :list, url: "", method: nil, html: { class: "col-lg-8", name: "listForm", "ng-submit" => "createList()" } do |f|
+      = f.input :name, label: "Name", input_html: { "ng-model" => "newList.name", "required" => "" }
+      %div{"ng-show" => "listForm['list[name]'].$dirty && listForm['list[name]'].$invalid" }
+        %span.has-error{"ng-show" => "listForm['list[name]'].$error.required"}
+          Name is required.
+
+      .form-group
+        = f.button :submit, "Add", class: "btn btn-primary", "ng-disabled" => "listForm.$invalid"  
+
+  .container
+    %ul{"ui-sortable" => "sortableOptions", "ng-model" => "lists"}
+      %li.board.col-lg-3{"ng-repeat" => "list in lists" }
+        %a{href: "#"}
+          {{ list.name || 'empty' }}
+        %br
+        

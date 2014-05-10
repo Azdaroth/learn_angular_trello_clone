@@ -19,5 +19,6 @@
         %p 
           Priority:
           {{ board.priority }}
-        %span.text-danger{"ng-click" => "destroyBoard(board.id)"}
+        %span.label.label-danger{"ng-click" => "destroyBoard(board.id)"}
           Remove
+        = link_to "Show", "/boards/{{board.id}}", "ng-href" => "/boards/{{board.id}}", class: "label label-info"
