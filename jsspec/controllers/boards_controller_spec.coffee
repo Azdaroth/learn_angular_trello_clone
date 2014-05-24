@@ -62,12 +62,17 @@ describe 'BoardsController', ->
       spyOn(@List.prototype, 'all').andReturn(@lists)
       spyOn(@List.prototype, 'create').andReturn(@deferred.promise)
       spyOn(@List.prototype, 'update')
+      @listForm = {
+        $setPristine: ->
+      }
+      @scope.listForm = @listForm
       @httpBackend.whenGET("/templates/index.html").respond()
       @httpBackend.whenPATCH("/api/boards/1/lists/2").respond()
       @httpBackend.whenPATCH("/api/boards/1/lists/3").respond()
       @scope.init()
       @rootScope.$broadcast('$routeChangeSuccess', {});
-      @scope.newList.name = "name"
+      @scope.newList.name = "name"      
+      spyOn(@listForm, "$setPristine")
       @scope.createList()
       @scope.$digest()
       @timeout.flush()
@@ -82,6 +87,9 @@ describe 'BoardsController', ->
 
       it "calls service to create list", ->
         expect(@List.prototype.create).toHaveBeenCalledWith({name: "name"})
+
+      it 'set form to be pristine', ->
+        expect(@listForm.$setPristine).toHaveBeenCalled()
 
     describe "priorities", ->        
 
@@ -99,3 +107,26 @@ describe 'BoardsController', ->
         expect(@List.prototype.update.callCount).toEqual(2)
         expect(@List.prototype.update).toHaveBeenCalledWith(3, { priority: 1 })
         expect(@List.prototype.update).toHaveBeenCalledWith(2, { priority: 2 })
+
+  describe "setPriorities", ->
+
+    beforeEach ->
+      @deferred = @q.defer()
+      @board = { id: 10, name: "name" }
+      @list = { id: 1, name: "name", priority: 0 }
+      @lists = [@list]
+      @httpBackend.whenGET("/templates/index.html").respond()
+      spyOn(@Board.prototype, 'find').andReturn(@board)
+      spyOn(@List.prototype, 'all').andReturn(@lists)
+      @deferred.resolve(@list)
+      @scope.init()
+      @rootScope.$broadcast('$routeChangeSuccess', {});
+      spyOn(@List.prototype, "update").andReturn(@deferred.promise)
+      @scope.setPriorities()
+      @timeout.flush()
+
+    it "sets value of priority based on index", ->
+      expect(@list.priority).toEqual(1)
+
+    it "calls service to update list with priority based on index", ->
+      expect(@List.prototype.update).toHaveBeenCalledWith(1, { priority: 1 })
