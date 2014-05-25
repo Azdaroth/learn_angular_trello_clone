@@ -15,7 +15,11 @@
   .container
     %ul{"ui-sortable" => "sortableOptions", "ng-model" => "lists"}
       %li.board.col-lg-3{"ng-repeat" => "list in lists | orderBy: 'priority'" }
+        %a{href: "#", "editable-text" => "list.name", "onbeforesave" => "updateList(list.id, {name: $data})"}
+          {{ list.name || 'empty' }}
         %br
         %p priority {{ list.priority }}
         {{ list.name || 'empty' }}
+        %span.label.label-danger{"ng-click" => "destroyList(list.id)"}
+          Remove
         

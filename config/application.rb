@@ -20,7 +20,7 @@ module TrelloClone
     config.time_zone = 'Warsaw'
     config.i18n.default_locale = :pl
 
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif,
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.eot *.svg *.ttf *.woff,
     "fontawesome-webfont.ttf",
     "fontawesome-webfont.eot",
     "fontawesome-webfont.svg",

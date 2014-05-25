@@ -20,6 +20,8 @@ module.exports = (config) ->
       'vendor/assets/components/angular-route/angular-route.js',
       'vendor/assets/components/angular-ui-sortable/sortable.js',
       'vendor/assets/components/angular-xeditable/dist/js/xeditable.js'
+      'vendor/assets/javascripts/underscore.js',
+      'vendor/assets/components/angular-underscore-module/angular-underscore-module.js'
       'jsspec/support/*.js'
       'app/assets/javascripts/main.js.coffee',
       'app/assets/javascripts/**/*.js*',

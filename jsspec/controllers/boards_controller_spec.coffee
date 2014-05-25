@@ -22,7 +22,8 @@ describe 'BoardsController', ->
   beforeEach ->
     inject ($rootScope, $q, $controller, $injector,
       $location, $route,$routeParams, $timeout,
-      $httpBackend, Board, List) =>
+      $httpBackend, Board, List, _) =>
+        @_ = _
         @q = $q
         @Board = Board
         @List = List
@@ -130,3 +131,33 @@ describe 'BoardsController', ->
 
     it "calls service to update list with priority based on index", ->
       expect(@List.prototype.update).toHaveBeenCalledWith(1, { priority: 1 })
+
+  describe "destroyList", ->
+
+    beforeEach -> 
+      @deferred = @q.defer()
+      @deferredUpdate = @q.defer()
+      @board = { id: 10, name: "name" }
+      @list = { id: 1, name: "name", priority: 0 }
+      @otherList = { id: 2, name: "name", priority: 10 }
+      @lists = [@list, @otherList]
+      spyOn(@Board.prototype, 'find').andReturn(@board)
+      spyOn(@List.prototype, 'all').andReturn(@lists)
+      @httpBackend.whenGET("/templates/index.html").respond()
+      @deferred.resolve()
+      @deferredUpdate.resolve(@otherList)
+      spyOn(@List.prototype, 'destroy').andReturn(@deferred.promise)
+      spyOn(@List.prototype, 'update').andReturn(@deferredUpdate.promise)
+      @scope.init()
+      @rootScope.$broadcast('$routeChangeSuccess', {});
+      @scope.destroyList(@list.id)
+      @timeout.flush()
+
+    it "calls service to destroy list", ->
+      expect(@List.prototype.destroy).toHaveBeenCalledWith(@list.id)
+
+    it "removes list from lists array", ->
+      expect(@scope.lists.length).toEqual(1)
+
+    it "sets priority for other lists", ->
+      expect(@List.prototype.update).toHaveBeenCalledWith(2, { priority: 1 })

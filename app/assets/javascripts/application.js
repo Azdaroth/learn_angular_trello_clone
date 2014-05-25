@@ -15,12 +15,13 @@
 //= require jquery_ujs
 //= require wiselinks
 //= require twitter/bootstrap
-//= require underscore
 //= require angular/angular
 //= require angular-resource/angular-resource
 //= require angular-route/angular-route
 //= require angular-ui-sortable/sortable
 //= require angular-xeditable/dist/js/xeditable.js
+//= require underscore
+//= require angular-underscore-module/angular-underscore-module.js
 //= require main
 //= require_directory ./services
 //= require_directory ./directives
