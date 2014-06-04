@@ -13,4 +13,5 @@ trelloClone.config ($locationProvider, $routeProvider) ->
   $routeProvider
     .when "/dashboard", templateUrl: "/templates/index.html", controller: 'DashboardController'
     .when "/boards/:boardId", templateUrl: "/templates/board.html", controller: 'BoardsController'
+    .otherwise redirectTo: "/dashboard"
     

@@ -1,8 +1,7 @@
-class List < ActiveRecord::Base
+class Card < ActiveRecord::Base
 
-  has_many :cards
+  belongs_to :list
 
   validates :name, :priority, presence: true
-
 
 end

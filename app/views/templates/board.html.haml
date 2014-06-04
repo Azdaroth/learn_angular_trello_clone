@@ -15,11 +15,16 @@
   .container
     %ul{"ui-sortable" => "sortableOptions", "ng-model" => "lists"}
       %li.board.col-lg-3{"ng-repeat" => "list in lists | orderBy: 'priority'" }
-        %a{href: "#", "editable-text" => "list.name", "onbeforesave" => "updateList(list.id, {name: $data})"}
-          {{ list.name || 'empty' }}
-        %br
-        %p priority {{ list.priority }}
-        {{ list.name || 'empty' }}
-        %span.label.label-danger{"ng-click" => "destroyList(list.id)"}
-          Remove
-        
+        %p
+          priority {{ list.priority }}
+          %a{href: "#", "editable-text" => "list.name", "onbeforesave" => "updateList(list.id, {name: $data})"}
+            {{ list.name || 'empty' }}
+          %span.label.label-danger{"ng-click" => "destroyList(list.id)"}        
+            Remove
+        .cards{"ng-controller" => "CardsController", "ng-init" => "initWithService(list.board_id, list.id)"}
+          %ul{"ui-sortable" => "sortableOptions", "ng-model" => "cards"}
+            %li{"ng-repeat" => "card in cards | orderBy: 'priority'" }
+              {{ card.name || 'empty' }}
+              {{ card.priority }}
+          = simple_form_for :card, url: "", method: nil, html: { class: "col-lg-8", name: "cardForList-list.id", "ng-submit" => "createCard()" } do |f|
+            = f.input :name, label: "Name", input_html: { "ng-model" => "newCard.name", "required" => "" }

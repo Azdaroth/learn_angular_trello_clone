@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507210404) do
+ActiveRecord::Schema.define(version: 20140604172827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +56,18 @@ ActiveRecord::Schema.define(version: 20140507210404) do
     t.index ["board_id"], :name => "fk__lists_board_id"
     t.index ["board_id"], :name => "index_lists_on_board_id"
     t.foreign_key ["board_id"], "boards", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_lists_board_id"
+  end
+
+  create_table "cards", force: true do |t|
+    t.integer  "list_id",                  null: false
+    t.integer  "priority",    default: 1,  null: false
+    t.string   "name",        default: "", null: false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["list_id"], :name => "fk__cards_list_id"
+    t.index ["list_id"], :name => "index_cards_on_list_id"
+    t.foreign_key ["list_id"], "lists", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_cards_list_id"
   end
 
 end

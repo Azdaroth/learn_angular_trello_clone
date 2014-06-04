@@ -151,7 +151,8 @@ describe 'BoardsController', ->
       @scope.init()
       @rootScope.$broadcast('$routeChangeSuccess', {});
       @scope.destroyList(@list.id)
-      @timeout.flush()
+      @scope.$digest()
+
 
     it "calls service to destroy list", ->
       expect(@List.prototype.destroy).toHaveBeenCalledWith(@list.id)
@@ -160,4 +161,5 @@ describe 'BoardsController', ->
       expect(@scope.lists.length).toEqual(1)
 
     it "sets priority for other lists", ->
+      @timeout.flush()
       expect(@List.prototype.update).toHaveBeenCalledWith(2, { priority: 1 })
