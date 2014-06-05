@@ -24,7 +24,10 @@
         .cards{"ng-controller" => "CardsController", "ng-init" => "initWithService(list.board_id, list.id)"}
           %ul{"ui-sortable" => "sortableOptions", "ng-model" => "cards"}
             %li{"ng-repeat" => "card in cards | orderBy: 'priority'" }
-              {{ card.name || 'empty' }}
+              %a{href: "#", "editable-text" => "card.name", "onbeforesave" => "updateCard(card.id, {name: $data})"}
+                {{ card.name || 'empty' }}
               {{ card.priority }}
+              %span.label.label-danger{"ng-click" => "destroyCard(card.id)"}        
+                Remove
           = simple_form_for :card, url: "", method: nil, html: { class: "col-lg-8", name: "cardForList-list.id", "ng-submit" => "createCard()" } do |f|
             = f.input :name, label: "Name", input_html: { "ng-model" => "newCard.name", "required" => "" }
