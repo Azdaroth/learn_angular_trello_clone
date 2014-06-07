@@ -8,8 +8,16 @@ angular.module('trelloClone').controller('CardsController', function($scope, $ro
   };
 
   this.sortableOptions = {
-    update: function(event, ui) {
+    connectWith: '.cards-list',
+    placeholder: 'placeholder',
+    update: function(event, ui) {      
       return self.setPriorities();
+    },
+    beforeStop: function(event, ui) {
+      var cardId = ui.helper[0].getAttribute("data-card-id")
+      var newListId = ui.helper.parent()[0].getAttribute("data-list-id");
+      var boardId = ui.helper.parent()[0].getAttribute("data-board-id");
+      new Card(boardId, newListId).update(cardId, {list_id: newListId});
     }
   };
 

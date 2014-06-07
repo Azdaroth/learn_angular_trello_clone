@@ -39,11 +39,11 @@ class Api::CardsController < Api::BaseController
     end
 
     def card
-      @card ||= list.cards.find(params[:id])
+      @card ||= current_user.cards.find(params[:id])
     end
 
     def card_params
-      params.require(:card).permit(:name, :priority, :description)
+      params.require(:card).permit(:name, :priority, :description, :list_id)
     end
 
 
