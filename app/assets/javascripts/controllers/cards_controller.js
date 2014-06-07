@@ -1,5 +1,5 @@
 angular.module('trelloClone').controller('CardsController', function($scope, $routeParams, 
-    $timeout, $route, $q, Card) {
+    $timeout, $route, $q, Card, $modal) {
 
   var self = this;
 
@@ -15,6 +15,9 @@ angular.module('trelloClone').controller('CardsController', function($scope, $ro
     },
     beforeStop: function(event, ui) {
       var cardId = ui.helper[0].getAttribute("data-card-id")
+      if (!cardId) {
+        return;
+      }
       var newListId = ui.helper.parent()[0].getAttribute("data-list-id");
       var boardId = ui.helper.parent()[0].getAttribute("data-board-id");
       new Card(boardId, newListId).update(cardId, {list_id: newListId});
@@ -27,6 +30,20 @@ angular.module('trelloClone').controller('CardsController', function($scope, $ro
     this.cardService = cardService;
     return this.cards = cardService.all();
   };
+
+  this.showCard = function(card) {
+    $modal.open({
+      templateUrl: "/templates/card.html",
+      controller: function($scope, card) {
+        $scope.card = card;
+      },
+      resolve: {
+        card: function() {
+          return card;
+        }
+      }
+    });
+  }
 
   this.createCard = function() {
     return this.cardService.create({name: this.newCard.name}).then(function(card) {

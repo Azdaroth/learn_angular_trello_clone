@@ -28,7 +28,9 @@
               %a{href: "#", "editable-text" => "card.name", "onbeforesave" => "cardsCtrl.updateCard(card.id, {name: $data})"}
                 {{ card.name || 'empty' }}
               {{ card.priority }}
-              %span.label.label-danger{"ng-click" => "cardsCtrl.destroyCard(card.id)"}        
+              %span.label.label-info.clickable{"ng-click" => "cardsCtrl.showCard(card)"}
+                Details
+              %span.label.label-danger.clickable{"ng-click" => "cardsCtrl.destroyCard(card.id)"}
                 Remove
 
             %li.no-decoration{"ng-show" => "cardsCtrl.cards.length === 0"}

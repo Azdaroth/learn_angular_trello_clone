@@ -14,6 +14,7 @@
     "angular-ui-sortable": "0.12.3",
     "angular-xeditable": "0.1.8",
     "angular-underscore": "master",
-    "angular-underscore-module": "master"
+    "angular-underscore-module": "master",
+    "angular-bootstrap": "0.11.0"
   }
 }

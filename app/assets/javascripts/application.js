@@ -20,6 +20,8 @@
 //= require angular-route/angular-route
 //= require angular-ui-sortable/sortable
 //= require angular-xeditable/dist/js/xeditable.js
+//= require angular-bootstrap/ui-bootstrap.js
+//= require angular-bootstrap/ui-bootstrap-tpls.js
 //= require underscore
 //= require angular-underscore-module/angular-underscore-module.js
 //= require main
