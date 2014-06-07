@@ -14,3 +14,12 @@ input.ng-invalid.ng-dirty {
   margin: 10px 20px 10px 0;
   min-height: 200px;  
 }
+
+li.no-decoration {
+  list-style-type: none;
+}
+
+.cards-list {
+  min-height: 50px;
+  border: 1px dotted;
+}
