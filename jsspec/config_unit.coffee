@@ -26,8 +26,10 @@ module.exports = (config) ->
       'jsspec/support/*.js'
       'app/assets/javascripts/main.js.coffee',
       'app/assets/javascripts/**/*.js*',
+      'app/assets/javascripts/**/*.js',   
       'jsspec/controllers/*.coffee',
       'jsspec/services/*.coffee'
+      'jsspec/filters/*.js'
       'jsspec/**/*.coffee'
     ]
 

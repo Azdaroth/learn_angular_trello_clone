@@ -26,6 +26,7 @@
 //= require angular-underscore-module/angular-underscore-module.js
 //= require main
 //= require_directory ./services
+//= require_directory ./filters
 //= require_directory ./directives
 //= require_directory ./controllers
 

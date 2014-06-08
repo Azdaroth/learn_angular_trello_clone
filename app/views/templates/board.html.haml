@@ -23,8 +23,11 @@
           %span.label.label-danger{"ng-click" => "destroyList(list.id)"}        
             Remove
         .cards{"ng-controller" => "CardsController as cardsCtrl", "ng-init" => "cardsCtrl.initWithService(list.board_id, list.id)"}
+          = simple_form_for :cards_filter, url: "", method: nil do |f|
+            = f.input :input, label: "Search", input_html: { "ng-model" => "cardSearch" }
+
           %ul.cards-list{"ui-sortable" => "cardsCtrl.sortableOptions", "ng-model" => "cardsCtrl.cards", "data-list-id" => "{{list.id}}", "data-board-id" => "{{board.id}}"}
-            %li{"ng-repeat" => "card in cardsCtrl.cards | orderBy: 'priority'", "data-card-id" => "{{card.id}}", "data-list-id" => "{{list.id}}" }
+            %li{"ng-repeat" => "card in cardsCtrl.cards | filter:cardSearch | orderBy: 'priority'", "data-card-id" => "{{card.id}}", "data-list-id" => "{{list.id}}" }
               %a{href: "#", "editable-text" => "card.name", "onbeforesave" => "cardsCtrl.updateCard(card.id, {name: $data})"}
                 {{ card.name || 'empty' }}
               {{ card.priority }}
