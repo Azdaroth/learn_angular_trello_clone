@@ -1,8 +1,8 @@
 == README
 
-An app I created to learn AngularJS. Trello is pretty cool and making clone of some functionality like creating boards, lists and card and making them sortable etc. seemed like a great way to learn new framework. Naming is hard, so I just named it Trello Clone:). 
+An app I created to learn AngularJS. Trello is pretty cool and making clone of some functionality like creating boards, lists and card and making them sortable etc. seemed like a great way to learn new framework. Naming is hard, so I just named it Trello Clone:). Or maybe Kanban Board would be better. 
 
-Code might be really messy, but it coulk a good resource about how to test (or not to test) Angular code and integrate it with Rails. I'm not a really good designer and the design is probably pretty bad :).
+Code might be quite messy, but it could a good resource about how to test (or not to test) Angular code and integrate it with Rails. I didn't care much about frontend design, so it's pretty poor:).
 
 To run tests use rake task:
 

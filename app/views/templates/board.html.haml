@@ -36,7 +36,6 @@
               %span.label.label-danger.clickable{"ng-click" => "cardsCtrl.destroyCard(card.id)"}
                 Remove
 
-            %li.no-decoration{"ng-show" => "cardsCtrl.cards.length === 0"}
-              &nbsp;
+            %emptycard{"ng-show" => "cardsCtrl.cards.length === 0"}
           = simple_form_for :card, url: "", method: nil, html: { class: "col-lg-8", name: "cardForList-list.id", "ng-submit" => "cardsCtrl.createCard()" } do |f|
             = f.input :name, label: "Name", input_html: { "ng-model" => "cardsCtrl.newCard.name", "required" => "" }
